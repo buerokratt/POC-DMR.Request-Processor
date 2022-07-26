@@ -101,3 +101,5 @@ jobs:
       - name: Tag commit
         # if: github.ref_name == 'main'
         run: gh release create ${{ steps.gitversion.outputs.fullSemVer }} --generate-notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
