@@ -99,7 +99,7 @@ jobs:
         run: dotnet nuget push nupkgs/*.nupkg -s 'https://api.nuget.org/v3/index.json' -k ${{secrets.NUGET_GALLERY_API_KEY}}
 
       - name: Tag commit
-        # if: github.ref_name == 'main'
+        if: github.ref_name == 'main'
         run: gh release create ${{ steps.gitversion.outputs.fullSemVer }} --generate-notes
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
